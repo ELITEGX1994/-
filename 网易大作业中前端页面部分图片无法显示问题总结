@@ -1,0 +1,23 @@
+问题描述：在网易大作业购物系统中，发现前端页面部分商品图片无法显示
+原因分析：经过调试前端JSP页面，发现无法显示图片的商品URL中包含中文字符。全英文的url商品显示正常。判断可能是TOMCAT配置问题
+
+解决：
+1.打开Tomcat下conf文件夹里的server.xml文件
+
+修改 <Connector port="8080" protocol="HTTP/1.1"
+
+connectionTimeout="20000"
+
+redirectPort="8443" />
+
+添加进URIEncoding="UTF-8"
+
+最后如下：
+
+<Connector port="8080" protocol="HTTP/1.1"
+
+connectionTimeout="20000"
+
+redirectPort="8443" URIEncoding="UTF-8" />
+
+注意IDEA或Eclipse 修改 他们自己Tomcat配置文件，eclipse下修改Servers项目下的server.xml
